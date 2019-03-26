@@ -2,7 +2,7 @@
 // Make me compile! Scroll down for hints :)
 
 fn main() {
-    let x;
+    let x = 19;
     if x == 10 {
         println!("Ten!");
     } else {

@@ -6,12 +6,21 @@
 // this function to have.
 // Scroll down for hints!!!
 
-pub fn generate_nametag_text(name: String) -> Result<String, String> {
+pub fn generate_nametag_text(name: String) -> Option<String> {
+    if name.len() > 0 {
+        Some(format!("Hi! My name is {}", name))
+    } else {
+        // Empty names aren't allowed.
+        None
+    }
+}
+
+pub fn generate_nametag_text_result(name: String) -> Result<String, String> {
     if name.len() > 0 {
         Ok(format!("Hi! My name is {}", name))
     } else {
         // Empty names aren't allowed.
-        Err("`name` was empty; it must be nonempty.".into())
+        Err(r`name` was empty; it must be nonempty.".into())
     }
 }
 
@@ -26,14 +35,14 @@ mod tests {
     fn generates_nametag_text_for_a_nonempty_name() {
         assert_eq!(
             generate_nametag_text("Beyoncé".into()),
-            Ok("Hi! My name is Beyoncé".into())
+            Some("Hi! My name is Beyoncé".into())
         );
     }
 
     #[test]
     fn explains_why_generating_nametag_text_fails() {
         assert_eq!(
-            generate_nametag_text("".into()),
+            generate_nametag_text_result("".into()),
             Err("`name` was empty; it must be nonempty.".into())
         );
     }

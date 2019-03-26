@@ -19,3 +19,11 @@ fn verify_test() {
     assert_eq!(price1, 55);
     assert_eq!(price2, 80);
 }
+
+fn calculateprice(price:i32)->i32 {
+    if price>40 {
+        price * 1
+    }else {
+        price * 2
+    }
+}
